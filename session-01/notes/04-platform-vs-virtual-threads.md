@@ -283,7 +283,7 @@ The `spring.threads.virtual.enabled=true` setting from use case 1 switches sever
 | **Request handling** | The embedded Tomcat runs each request on its own virtual thread instead of a pooled platform thread |
 | **Async and scheduled work** | The application task executor and scheduler use virtual threads too |
 | **Controller and service code** | Unchanged; it is the same blocking code |
-| **Thread names in the log** | The `%thread` field changes: pooled names such as `http-nio-8080-exec-1` give way to virtual-thread names (typically `tomcat-handler-N`). Compare the log before and after you set the property |
+| **Thread names in the log** | The `%thread` field changes: pooled names such as `http-nio-8080-exec-1` give way to virtual-thread names such as `tomcat-handler-0` (verified on Spring Boot 3.5). Compare the log before and after you set the property |
 
 ### The connection pool is still the cap
 
