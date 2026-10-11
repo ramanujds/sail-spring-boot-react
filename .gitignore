@@ -1,0 +1,43 @@
+# Local-only project instructions
+CLAUDE.md
+
+# IDE and editor files
+.idea/
+*.iml
+*.iws
+.vscode/
+.vs/
+.settings/
+.classpath
+.project
+.factorypath
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build output
+target/
+build/
+out/
+dist/
+*.class
+
+# Logs
+*.log
+logs/
+
+# Secrets and local environment (commit *.example templates instead)
+.env
+.env.*
+*.env
+application-local.yml
+application-local.properties
+!*.example
+
+# Node (frontend days)
+node_modules/
+
+# Claude Code local settings
+.claude/settings.local.json
