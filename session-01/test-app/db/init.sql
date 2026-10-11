@@ -1,6 +1,12 @@
--- Runs once, when the container creates its database for the first time.
--- The testapp user itself is created by the image (APP_USER in docker-compose.yml).
--- The image runs this script as SYS in the root container, so switch to the PDB first.
+-- Creates the MESSAGES table and two sample rows.
+--
+-- Docker container: nothing to do. The image runs this file once, on first start.
+--
+-- Local Oracle 19c: run this file yourself, connected as YOUR schema user, and
+-- skip (delete or comment out) the two ALTER SESSION lines below. They only exist
+-- because the Docker image runs this script as SYS in the root container.
+--   SQL Developer: open this file and run it as a script (F5).
+--   SQL*Plus:      sqlplus <schema-user>@//<host>:<port>/<service-name> @db/init.sql
 
 ALTER SESSION SET CONTAINER = XEPDB1;
 ALTER SESSION SET CURRENT_SCHEMA = testapp;

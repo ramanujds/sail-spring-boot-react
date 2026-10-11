@@ -1,0 +1,18 @@
+# Profile for a locally installed Oracle 19c.
+# Activate with: mvn spring-boot:run -Dspring-boot.run.profiles=19c
+# Values here override the defaults in application.yml.
+#
+# What differs from the Docker setup:
+#   - Service name: the Docker container uses XEPDB1. A local 19c installation usually uses
+#     ORCL (non-container database) or ORCLPDB1 (pluggable database). Ask your DBA, or run
+#     "lsnrctl status" on the database server and read the "Service" lines.
+#   - User: your own schema user, not "testapp". It needs CREATE SESSION, CREATE TABLE and
+#     CREATE SEQUENCE, plus quota on its default tablespace.
+#   - Password: set it in an environment variable, never in this file.
+#   - Driver and Hibernate: no change. ojdbc11 23.x (managed by Spring Boot 3.5) and
+#     Hibernate 6.6 both support Oracle Database 19c.
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@//localhost:1521/ORCL   # host:port/service-name
+    username: your_schema_user
+    password: ${DB_PASSWORD}                       # export DB_PASSWORD=... before starting
