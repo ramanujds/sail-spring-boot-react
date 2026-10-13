@@ -43,7 +43,7 @@ public class TicketController {
 
     @GetMapping("/{id}")
     public ResponseEntity<TicketResponse> findById(@PathVariable UUID id) {
-        return ticketRepository.findById(id)
+        return ticketRepository.findWithCommentsById(id)
                 .map(TicketMapper::toResponse)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -60,7 +60,7 @@ public class TicketController {
     // Send only the fields you want to change.
     @PatchMapping("/{id}")
     public ResponseEntity<TicketResponse> update(@PathVariable UUID id, @RequestBody TicketRequest request) {
-        return ticketRepository.findById(id)
+        return ticketRepository.findWithCommentsById(id)
                 .map(ticket -> {
                     TicketMapper.applyChanges(ticket, request);
                     return ticketRepository.save(ticket);

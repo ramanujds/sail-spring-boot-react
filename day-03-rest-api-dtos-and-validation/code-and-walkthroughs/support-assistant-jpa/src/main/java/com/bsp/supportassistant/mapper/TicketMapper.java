@@ -39,7 +39,8 @@ public class TicketMapper {
                 ticket.getTitle(),
                 ticket.getDescription(),
                 ticket.getStatus(),
-                ticket.getPriority());
+                ticket.getPriority(),
+                ticket.getComments().size());
     }
 
     public static List<TicketResponse> toResponseList(List<Ticket> tickets) {

@@ -11,5 +11,6 @@ public record TicketResponse(
         String title,
         String description,
         TicketStatus status,
-        Priority priority) {
+        Priority priority,
+        int commentCount) {
 }
