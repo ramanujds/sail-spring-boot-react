@@ -323,6 +323,7 @@ How to read it: Spring Boot starts a web server called Tomcat inside your applic
 | You changed the code but the response is the same | The old application is still running | Stop it with `Ctrl + C` and start it again |
 | `Could not transfer artifact` during a Maven build | Maven cannot reach the internet through the company proxy | Follow [Maven proxy troubleshooting](maven-proxy-troubleshooting.md) |
 | IntelliJ fails on `apache-maven-...-bin.zip` | IntelliJ is using the Maven wrapper, which downloads Maven without your proxy settings | Choose the bundled Maven: [IntelliJ Maven home path](intellij-maven-home-path.md) |
+| `git clone` fails with `Could not resolve host` or `407` | Git does not use Maven's or the browser's proxy settings | Follow [Git proxy troubleshooting](git-proxy-troubleshooting.md) |
 
 ---
 
@@ -346,6 +347,7 @@ How to read it: Spring Boot starts a web server called Tomcat inside your applic
 
 - [JAR vs WAR, and REST APIs vs pages with views](jar-vs-war-and-app-types.md): how to package an application, and what it returns.
 - [Maven proxy troubleshooting](maven-proxy-troubleshooting.md)
+- [Git proxy troubleshooting](git-proxy-troubleshooting.md)
 - [IntelliJ: use the bundled Maven](intellij-maven-home-path.md)
 - [Proxy issues ahead](proxy-issues-ahead.md)
 

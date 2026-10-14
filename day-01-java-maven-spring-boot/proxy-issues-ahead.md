@@ -247,15 +247,17 @@ If `git clone`, `git pull`, or `git push` over `https` fails with `Could not res
 
 ```bash
 git config --global http.proxy http://PROXY_HOST:PROXY_PORT
-git config --global https.proxy http://PROXY_HOST:PROXY_PORT
 ```
+
+This one setting covers both `http://` and `https://` addresses. Git has no `https.proxy` setting.
 
 To remove it:
 
 ```bash
 git config --global --unset http.proxy
-git config --global --unset https.proxy
 ```
+
+For the full steps, a test command, certificate errors and a table of messages, see [Git proxy troubleshooting](git-proxy-troubleshooting.md).
 
 ---
 
@@ -277,6 +279,7 @@ git config --global --unset https.proxy
 |---|---|---|
 | `Could not transfer artifact` | Maven cannot reach the internet | [Maven proxy troubleshooting](maven-proxy-troubleshooting.md) |
 | Build fails on `apache-maven-...-bin.zip` | IntelliJ is using the Maven wrapper | [IntelliJ Maven home path](intellij-maven-home-path.md) |
+| `Could not resolve host` or `Received HTTP code 407` from `git clone` | Git cannot reach the server through the proxy | [Git proxy troubleshooting](git-proxy-troubleshooting.md) |
 | `npm error ... ECONNREFUSED`, `ETIMEDOUT`, `ENOTFOUND` | npm cannot reach the registry | [Section 7](#7-days-10-and-11-npm) |
 | `SELF_SIGNED_CERT_IN_CHAIN` or similar | A certificate problem | [Section 7](#certificate-errors) |
 | A proxy error page for `localhost` | The proxy is catching local calls | [Section 3](#3-calls-to-localhost-go-through-the-proxy) |
