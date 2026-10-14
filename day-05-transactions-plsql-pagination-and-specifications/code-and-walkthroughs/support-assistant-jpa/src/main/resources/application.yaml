@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: support-assistant
+
+  datasource:
+    # Option B: Oracle XE 21 in Docker on your own machine
+    url: jdbc:oracle:thin:@//localhost:1521/XEPDB1
+    username: support
+    password: YOUR_PASSWORD
+
+    # Option A: Oracle 19c on your organization's network.
+    # Comment out the three lines above and use these instead.
+    # url: jdbc:oracle:thin:@//ORACLE_HOST:1521/ORACLE_SERVICE
+    # username: YOUR_USERNAME
+    # password: YOUR_PASSWORD
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: true
+    open-in-view: false
+
+  data:
+    web:
+      pageable:
+        max-page-size: 50

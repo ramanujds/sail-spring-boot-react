@@ -60,10 +60,12 @@ public class TicketController {
     // Send only the fields you want to change.
     @PatchMapping("/{id}")
     public ResponseEntity<TicketResponse> update(@PathVariable UUID id, @RequestBody TicketRequest request) {
+        // save returns a new copy without the comments, so the response is built from the loaded ticket.
         return ticketRepository.findWithCommentsById(id)
                 .map(ticket -> {
                     TicketMapper.applyChanges(ticket, request);
-                    return ticketRepository.save(ticket);
+                    ticketRepository.save(ticket);
+                    return ticket;
                 })
                 .map(TicketMapper::toResponse)
                 .map(ResponseEntity::ok)

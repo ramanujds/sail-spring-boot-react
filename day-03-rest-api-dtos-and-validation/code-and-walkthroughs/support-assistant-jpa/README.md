@@ -84,3 +84,20 @@ See [06-spring-data-jpa-with-oracle.md](../06-spring-data-jpa-with-oracle.md).
 - There is no validation. A request without a `title` or a `priority` reaches the database, which refuses it, and the API answers `500`.
 - The `404` response has an empty body. There is no JSON error message.
 - Swagger UI lists only `200` for each endpoint.
+
+## Running on Spring Boot 3.5
+
+The Java code and `application.yaml` are the same. Only these lines of `pom.xml` change:
+
+| Item in `pom.xml` | Spring Boot 4.1.1 (this project) | Spring Boot 3.5.x |
+|---|---|---|
+| Parent version | `4.1.1` | `3.5.16`, or another 3.5.x |
+| Web starter | `spring-boot-starter-webmvc` | `spring-boot-starter-web` |
+| Test starter | `spring-boot-starter-webmvc-test` | `spring-boot-starter-test` |
+| Oracle driver | `ojdbc17` | `ojdbc11` |
+| springdoc-openapi | `3.1.0` | `2.8.17`, or another 2.8.x |
+
+Built and run on Spring Boot 3.5.16 (Hibernate 6.6) with these changes.
+
+Some messages differ in wording: Hibernate writes `Schema-validation:` (with a hyphen) in schema errors, and the lazy loading error reads `failed to lazily initialize a collection of role`.
+

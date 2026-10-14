@@ -90,3 +90,16 @@ See [04-uuid-ids.md](../04-uuid-ids.md).
 - There is no validation. A ticket with no title is accepted.
 - The `404` response has an empty body. There is no JSON error message.
 - Swagger UI lists only `200` for each endpoint.
+
+## Running on Spring Boot 3.5
+
+The Java code and `application.yaml` are the same. Only these lines of `pom.xml` change:
+
+| Item in `pom.xml` | Spring Boot 4.1.1 (this project) | Spring Boot 3.5.x |
+|---|---|---|
+| Parent version | `4.1.1` | `3.5.16`, or another 3.5.x |
+| Web starter | `spring-boot-starter-webmvc` | `spring-boot-starter-web` |
+| Test starter | `spring-boot-starter-webmvc-test` | `spring-boot-starter-test` |
+| springdoc-openapi | `3.1.0` | `2.8.17`, or another 2.8.x |
+
+Built and run on Spring Boot 3.5.16 with these changes.

@@ -357,6 +357,8 @@ Only the three connection settings differ.
 
 ## Common mistakes
 
+> **Note:** Hibernate starts its schema messages with `Schema validation:` on Spring Boot 4 and with `Schema-validation:` (a hyphen) on Spring Boot 3.5. The rest of each message is the same.
+
 | Symptom | Cause | Fix |
 |---|---|---|
 | `Schema validation: missing table [tickets]` | The table is not in the database you connected to | Run `db/oracle/schema.sql` as the same user that `username` names in `application.yaml` |
