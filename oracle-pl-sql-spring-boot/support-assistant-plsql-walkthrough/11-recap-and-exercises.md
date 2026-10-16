@@ -48,3 +48,4 @@
 
 - The notes behind this walkthrough: [Entities or not?](../01-entities-or-not.md), [Calling PL/SQL programs](../02-calling-plsql-programs.md), and [Errors and transactions](../03-errors-and-transactions.md).
 - Optional: the same calls through MyBatis annotations, in [part 4](../04-the-same-calls-with-mybatis.md) and the project [support-assistant-plsql-mybatis](../support-assistant-plsql-mybatis/).
+- Next topics, each starting from a copy of this project: [transaction management](../support-assistant-plsql-transactions-walkthrough/README.md) and [pagination](../support-assistant-plsql-pagination-walkthrough/README.md).

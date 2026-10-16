@@ -40,6 +40,10 @@ flowchart LR
 | 2 | Call a function, a procedure with an `OUT` parameter, and a result set | [02-calling-plsql-programs.md](02-calling-plsql-programs.md) | 60 min |
 | 3 | Errors from `RAISE_APPLICATION_ERROR`, commits, and rollback | [03-errors-and-transactions.md](03-errors-and-transactions.md) | 40 min |
 | 4 (optional) | The same calls with MyBatis annotations, in a separate project | [04-the-same-calls-with-mybatis.md](04-the-same-calls-with-mybatis.md) | 30 min |
+| 5 | Transaction management: `REQUIRED` and `REQUIRES_NEW`, a log line that outlives a rollback, and testing what a rollback left | [05-transaction-management.md](05-transaction-management.md) | 60 min |
+| 6 | Pagination: one page from a procedure with `OFFSET ... FETCH`, a total as a second `OUT` value, and a safe sort | [06-pagination.md](06-pagination.md) | 60 min |
+
+Parts 5 and 6 each start from a **copy** of the finished `support-assistant-plsql` project, so you can do them in either order.
 
 ## Project
 
@@ -47,8 +51,27 @@ flowchart LR
 |---|---|---|
 | [support-assistant-plsql](support-assistant-plsql/) | A ticket API that calls the package `SUPPORT_TICKET_PKG` with `SimpleJdbcCall`. No entity, no JPA | 2 and 3 |
 | [support-assistant-plsql-mybatis](support-assistant-plsql-mybatis/) | The same API, calling the same package through MyBatis annotations | 4 (optional) |
+| [support-assistant-plsql-relations](support-assistant-plsql-relations/) | Tickets and their comments: a foreign key, two cursors for one ticket, one joined cursor for many tickets, and one transaction for a ticket and its first comment. Own `DESK_` tables and package | Relationships (optional) |
+| [support-assistant-plsql-transactions](support-assistant-plsql-transactions/) | A copy of the first project. A refused bulk change is rolled back, and its reason is kept in `SUPPORT_ERROR_LOG` through `REQUIRES_NEW` | 5 |
+| [support-assistant-plsql-pagination](support-assistant-plsql-pagination/) | A copy of the first project. `GET /api/tickets` returns one page, read by `SUPPORT_TICKET_PAGE_PKG` | 6 |
 
-Each project has a README with build and run steps, and the SQL scripts in `db/oracle/`. Both use the same package, so run the scripts once.
+Each project has a README with build and run steps, and the SQL scripts in `db/oracle/`. The first two projects use the same package, so run their scripts once. The relations project has its own tables and package, so it can live in the same schema. The transactions and pagination projects use the first package too, and add their own small package in a `03-` script, so they can live in the same schema as well.
+
+Each project with a step-by-step build has a walkthrough folder next to it: [support-assistant-plsql-walkthrough](support-assistant-plsql-walkthrough/README.md), [support-assistant-plsql-relations-walkthrough](support-assistant-plsql-relations-walkthrough/README.md), [support-assistant-plsql-transactions-walkthrough](support-assistant-plsql-transactions-walkthrough/README.md), and [support-assistant-plsql-pagination-walkthrough](support-assistant-plsql-pagination-walkthrough/README.md).
+
+## Relationships: tickets and comments (optional)
+
+The first project has one table of tickets. Real data has links between tables. This optional project adds a comments table and answers the questions that a link raises, with no entity class.
+
+| Question | Answer |
+|---|---|
+| Do you need `@OneToMany`? | No. The link is a foreign key column, and the package reads and writes both tables |
+| How do you read a ticket with its comments? | One call, two `SYS_REFCURSOR` parameters, joined into one record |
+| How do you read many tickets with their comments? | One call, one cursor from a `LEFT JOIN`, grouped in Java. A loop of calls would be the N+1 problem |
+| Who checks that a comment may be added? | The package. A closed ticket takes no comments (`409`) |
+| What if the ticket is saved and its first comment is refused? | `@Transactional` on the service undoes both |
+
+Start at the [walkthrough](support-assistant-plsql-relations-walkthrough/README.md). It needs the knowledge of parts 2 and 3.
 
 ## Before you start
 

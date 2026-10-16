@@ -1,0 +1,10 @@
+-- Oracle only. Removes everything that 01-tables.sql, 02-package.sql and 03-error-log.sql created,
+-- so that you can start again.
+
+DROP PACKAGE SUPPORT_ERROR_PKG;
+DROP TABLE SUPPORT_ERROR_LOG;
+
+DROP PACKAGE SUPPORT_TICKET_PKG;
+DROP TABLE SUPPORT_TICKET_LOG;
+DROP TABLE SUPPORT_TICKETS;
+DROP SEQUENCE SUPPORT_TICKETS_SEQ;
