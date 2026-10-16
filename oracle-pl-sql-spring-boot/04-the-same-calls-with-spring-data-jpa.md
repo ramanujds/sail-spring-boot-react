@@ -37,7 +37,7 @@ The two ways side by side, as tried on `SUPPORT_TICKET_PKG`:
 | Transaction | Optional for one call | Needed around every call |
 | Classes to write for the four programs | 1 | 3 |
 
-Choose `SimpleJdbcCall` when most of the work is calling PL/SQL. Choose JPA when the application already uses JPA for its tables and you want one style.
+Choose `SimpleJdbcCall` when most of the work is calling PL/SQL. Choose JPA when the application already uses JPA for its tables and you want one style. A third way, with MyBatis annotations, is in the optional [part 5](05-the-same-calls-with-mybatis.md).
 
 ---
 

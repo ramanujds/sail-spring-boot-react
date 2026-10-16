@@ -2,7 +2,7 @@
 
 A ticket API that calls an Oracle PL/SQL package. The business rules (the due date, the order of statuses) are in the package. The Spring Boot application receives the request, calls the package, and returns JSON. There is **no entity class and no JPA** in this project.
 
-This is the project of [part 2](../02-calling-plsql-programs.md) and [part 3](../03-errors-and-transactions.md). The optional [part 4](../04-the-same-calls-with-spring-data-jpa.md) has the same API through Spring Data JPA, in [support-assistant-plsql-jpa](../support-assistant-plsql-jpa/).
+This is the project of [part 2](../02-calling-plsql-programs.md) and [part 3](../03-errors-and-transactions.md). The optional [part 4](../04-the-same-calls-with-spring-data-jpa.md) has the same API through Spring Data JPA, in [support-assistant-plsql-jpa](../support-assistant-plsql-jpa/). The optional [part 5](../05-the-same-calls-with-mybatis.md) has it through MyBatis annotations, in [support-assistant-plsql-mybatis](../support-assistant-plsql-mybatis/).
 
 ## Versions
 

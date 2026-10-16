@@ -80,7 +80,7 @@ The idea of each part is the same in both worlds. Only the place changes.
 
 ## 5. The JPA way, in short
 
-JPA can call a program too, and it works against the same package. Parts 2 and 3 use `SimpleJdbcCall`, because it has the fewest parts to learn. The optional [part 4](04-the-same-calls-with-spring-data-jpa.md) builds the JPA way in a separate project. Each JPA tool was tried on `SUPPORT_TICKET_PKG`:
+JPA can call a program too, and it works against the same package. Parts 2 and 3 use `SimpleJdbcCall`, because it has the fewest parts to learn. The optional [part 4](04-the-same-calls-with-spring-data-jpa.md) builds the JPA way in a separate project, and the optional [part 5](05-the-same-calls-with-mybatis.md) builds a third way with MyBatis annotations, which also needs no entity. Each JPA tool was tried on `SUPPORT_TICKET_PKG`:
 
 | JPA way | What happened |
 |---|---|
