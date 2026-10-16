@@ -78,9 +78,9 @@ The idea of each part is the same in both worlds. Only the place changes.
 
 ---
 
-## 5. The JPA way, in short
+## 5. What about JPA?
 
-JPA can call a program too, and it works against the same package. Parts 2 and 3 use `SimpleJdbcCall`, because it has the fewest parts to learn. The optional [part 4](04-the-same-calls-with-spring-data-jpa.md) builds the JPA way in a separate project, and the optional [part 5](05-the-same-calls-with-mybatis.md) builds a third way with MyBatis annotations, which also needs no entity. Each JPA tool was tried on `SUPPORT_TICKET_PKG`:
+JPA can call a program too, and it works against the same package. Each JPA tool was tried on `SUPPORT_TICKET_PKG`:
 
 | JPA way | What happened |
 |---|---|
@@ -89,11 +89,7 @@ JPA can call a program too, and it works against the same package. Parts 2 and 3
 | The same, for a `SYS_REFCURSOR` | Works with no entity, but each row is an `Object[]`. A named record needs an entity or a result mapping |
 | The same, for a function | Fails: `PLS-00221: 'OPEN_COUNT' is not a procedure or is undefined`. A function needs a native query: `SELECT pkg.fn(:p) FROM DUAL` |
 
-`SimpleJdbcCall` handles a function, a procedure, and a cursor in the same way, and maps each row to a record without an entity. If your application already uses JPA, the JPA way keeps one style.
-
----|---|
-| JPA `@Procedure` or `StoredProcedureQuery` | JPA is built around entities. A result set is read into an entity class |
-| `SELECT my_function(1) FROM DUAL` with `JdbcTemplate` | Works for functions only, not for procedures |
+`SimpleJdbcCall` handles a function, a procedure, and a cursor in the same way, and maps each row to a record without an entity. Parts 2 and 3 use it because it has the fewest parts to learn. The optional [part 4](04-the-same-calls-with-mybatis.md) shows a second way with no entity, MyBatis annotations.
 
 ---
 
@@ -112,4 +108,4 @@ JPA can call a program too, and it works against the same package. Parts 2 and 3
 - A call to PL/SQL needs a connection, the program name, the values, and a place to read the result. It does not need an entity.
 - Keep each rule in one place. If the rule is in the package, call the package.
 - Use JPA for plain data access and PL/SQL for rules. One application can use both.
-- Next: [part 2](02-calling-plsql-programs.md) builds the calls with `SimpleJdbcCall`. The optional [part 4](04-the-same-calls-with-spring-data-jpa.md) shows them with Spring Data JPA.
+- Next: [part 2](02-calling-plsql-programs.md) builds the calls with `SimpleJdbcCall`. The optional [part 4](04-the-same-calls-with-mybatis.md) shows them with MyBatis annotations.

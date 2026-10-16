@@ -1,6 +1,6 @@
 # support-assistant-plsql-mybatis
 
-The same ticket API as [support-assistant-plsql](../support-assistant-plsql/), calling the same Oracle PL/SQL package through **MyBatis annotations** instead of `SimpleJdbcCall`. This is the project of the optional [part 5](../05-the-same-calls-with-mybatis.md).
+The same ticket API as [support-assistant-plsql](../support-assistant-plsql/), calling the same Oracle PL/SQL package through **MyBatis annotations** instead of `SimpleJdbcCall`. This is the project of the optional [part 4](../04-the-same-calls-with-mybatis.md).
 
 The endpoints, the service, the controller, the records, the error handler, and the tests are the same. Only the repository layer and the build and settings files differ. There is no entity class and no JPA.
 
@@ -16,7 +16,7 @@ The endpoints, the service, the controller, the records, the error handler, and 
 
 ## Before you build or run
 
-1. Run the scripts in [db/oracle](db/oracle/), in order. They are the same as in the other projects, so run them once for all three projects.
+1. Run the scripts in [db/oracle](db/oracle/), in order. They are the same as in the main project, so run them once for both projects.
 2. Set `DB_USERNAME` and `DB_PASSWORD` as environment variables. `DB_URL` is optional.
 
 > **Note:** a variable that is not set reaches Oracle as the text `${DB_PASSWORD}`. The application still starts, and the first call fails with `ORA-01017`.
@@ -30,7 +30,7 @@ mvn clean verify
 java -jar target/support-assistant-plsql-mybatis-0.0.1-SNAPSHOT.jar
 ```
 
-All projects use port `8080`. Stop one before you start another. `mvn clean verify` runs four tests that call the package in your database. Each test rolls back.
+Both projects use port `8080`. Stop one before you start the other. `mvn clean verify` runs four tests that call the package in your database. Each test rolls back.
 
 ## What is different
 

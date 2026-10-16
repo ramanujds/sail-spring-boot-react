@@ -47,4 +47,4 @@
 ## What's next
 
 - The notes behind this walkthrough: [Entities or not?](../01-entities-or-not.md), [Calling PL/SQL programs](../02-calling-plsql-programs.md), and [Errors and transactions](../03-errors-and-transactions.md).
-- Optional: the same calls through Spring Data JPA, in [part 4](../04-the-same-calls-with-spring-data-jpa.md) and the project [support-assistant-plsql-jpa](../support-assistant-plsql-jpa/).
+- Optional: the same calls through MyBatis annotations, in [part 4](../04-the-same-calls-with-mybatis.md) and the project [support-assistant-plsql-mybatis](../support-assistant-plsql-mybatis/).

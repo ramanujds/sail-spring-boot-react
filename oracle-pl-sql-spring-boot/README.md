@@ -39,18 +39,16 @@ flowchart LR
 | 1 | Entities or not: what a call needs, and when to use JPA | [01-entities-or-not.md](01-entities-or-not.md) | 20 min |
 | 2 | Call a function, a procedure with an `OUT` parameter, and a result set | [02-calling-plsql-programs.md](02-calling-plsql-programs.md) | 60 min |
 | 3 | Errors from `RAISE_APPLICATION_ERROR`, commits, and rollback | [03-errors-and-transactions.md](03-errors-and-transactions.md) | 40 min |
-| 4 (optional) | The same calls with Spring Data JPA, in a separate project | [04-the-same-calls-with-spring-data-jpa.md](04-the-same-calls-with-spring-data-jpa.md) | 30 min |
-| 5 (optional) | The same calls with MyBatis annotations, in a separate project | [05-the-same-calls-with-mybatis.md](05-the-same-calls-with-mybatis.md) | 30 min |
+| 4 (optional) | The same calls with MyBatis annotations, in a separate project | [04-the-same-calls-with-mybatis.md](04-the-same-calls-with-mybatis.md) | 30 min |
 
 ## Project
 
 | Project | Holds | Parts |
 |---|---|---|
 | [support-assistant-plsql](support-assistant-plsql/) | A ticket API that calls the package `SUPPORT_TICKET_PKG` with `SimpleJdbcCall`. No entity, no JPA | 2 and 3 |
-| [support-assistant-plsql-jpa](support-assistant-plsql-jpa/) | The same API, calling the same package through Spring Data JPA | 4 (optional) |
-| [support-assistant-plsql-mybatis](support-assistant-plsql-mybatis/) | The same API, calling the same package through MyBatis annotations | 5 (optional) |
+| [support-assistant-plsql-mybatis](support-assistant-plsql-mybatis/) | The same API, calling the same package through MyBatis annotations | 4 (optional) |
 
-Each project has a README with build and run steps, and the SQL scripts in `db/oracle/`. All three use the same package, so run the scripts once.
+Each project has a README with build and run steps, and the SQL scripts in `db/oracle/`. Both use the same package, so run the scripts once.
 
 ## Before you start
 

@@ -1,6 +1,6 @@
 # Optional: the same calls with MyBatis
 
-Parts 2 and 3 call the package with `SimpleJdbcCall`, and each call is written as Java code. With MyBatis you write each call once, in an annotation on an interface, and MyBatis creates the code. This part shows the same calls that way. It is a third, separate project. You can skip it.
+Parts 2 and 3 call the package with `SimpleJdbcCall`, and each call is written as Java code. With MyBatis you write each call once, in an annotation on an interface, and MyBatis creates the code. This part shows the same calls that way. It is a separate project. You can skip it.
 
 **Time:** about 30 minutes.
 **Project:** [support-assistant-plsql-mybatis](support-assistant-plsql-mybatis/) in this folder.
@@ -28,18 +28,18 @@ Parts 2 and 3 call the package with `SimpleJdbcCall`, and each call is written a
 
 `#{name}` is replaced by the value of the argument with that name.
 
-The three ways side by side, as tried on `SUPPORT_TICKET_PKG`:
+The two ways side by side, as tried on `SUPPORT_TICKET_PKG`:
 
-| | `SimpleJdbcCall` (parts 2 and 3) | Spring Data JPA (part 4) | MyBatis (this part) |
-|---|---|---|---|
-| Entity class | None | One, only to name the repository type | None |
-| Where the call is written | Java code | A procedure name in an annotation | The call, as SQL text, in an annotation |
-| Function | `executeFunction` | A native query | A `SELECT` |
-| `OUT` value | A `Map` from `execute` | The return value | A `Map` that you pass in |
-| Result set | A row mapper that you write | `Object[]` rows, mapped by hand | Records, filled automatically |
-| Transaction | Optional for one call | Needed around every call | Optional for one call |
-| Extra library | None | None | MyBatis |
-| Classes for the four programs | 1 | 3 | 2 |
+| | `SimpleJdbcCall` (parts 2 and 3) | MyBatis (this part) |
+|---|---|---|
+| Entity class | None | None |
+| Where the call is written | Java code | The call, as SQL text, in an annotation |
+| Function | `executeFunction` | A `SELECT` |
+| `OUT` value | A `Map` from `execute` | A `Map` that you pass in |
+| Result set | A row mapper that you write | Records, filled automatically |
+| Transaction | Optional for one call | Optional for one call |
+| Extra library | None | MyBatis |
+| Classes for the four programs | 1 | 2 |
 
 MyBatis is easiest for a result set and a function. An `OUT` value is the awkward part: it travels in a `Map`.
 
@@ -192,7 +192,7 @@ Each row was produced by making the mistake on purpose.
 
 1. Remove `local-cache-scope` from `application.yaml` and run `mvn clean verify`. Say which test fails, and why it passes when you put the setting back.
 2. Change the order of `title` and `status` in `TicketResponse`, rebuild, and call `GET /api/tickets`. Describe what you see. Put the order back.
-3. Add `due_in_hours (p_ticket_id IN NUMBER) RETURN NUMBER` to the package. Call it in all three projects. Count the lines that each one needed.
+3. Add `due_in_hours (p_ticket_id IN NUMBER) RETURN NUMBER` to the package. Call it in both projects. Count the lines that each one needed.
 
 ---
 
